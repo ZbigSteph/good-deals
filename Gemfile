@@ -46,6 +46,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'draper'
 gem 'pundit'
+gem 'rack-cors'
 
 gem 'rails-i18n'
 
