@@ -1,6 +1,5 @@
-json.extract! article, :id, :category, :label, :description, :prix, :image_couverture, :autres_images, :partner
+json.extract! article, :id, :category, :label, :description, :prix, :partner
 # json.url article_url(article, format: :json)
 if article.image_couverture.attached?
-  json.iamge_url rails_blob_url(article.image_couverture,
-                                 disposition: 'attachment')
+  json.iamge_url article.image_couverture
 end
