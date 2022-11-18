@@ -16,8 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
-app/.DS_Store
+/.DS_Store
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
@@ -35,3 +34,4 @@ app/.DS_Store
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+*.env
