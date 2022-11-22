@@ -5,15 +5,15 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = Article.all
-    @articles.joins(:image_couverture)
-    @articles.joins(:autres_images)
-    render json: @articles.map { |article|
-      article.as_json(only: %i[article.category label description prix
-                               partner]).merge(image_couverture_path: polymorphic_url(article.image_couverture))
-             .merge(autre_images_path: article.autres_images.each do |img|
-                                         polymorphic_url(img)
-                                       end)
-    }
+    # @articles.joins(:image_couverture)
+    # @articles.joins(:autres_images)
+    # render json: @articles.map { |article|
+    #   article.as_json(only: %i[article.category label description prix
+    #                            partner]).merge(image_couverture_path: polymorphic_url(article.image_couverture))
+    #          .merge(autre_images_path: article.autres_images.each do |img|
+    #                                      polymorphic_url(img)
+    #                                    end)
+    # }
   end
 
   # GET /articles/1 or /articles/1.json
