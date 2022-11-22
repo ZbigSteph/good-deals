@@ -1,2 +1,2 @@
-json.extract! partner, :id, :libelle, :logo, :telephone, :email, :ville, :pays, :quartier, :created_at, :updated_at
+json.extract! partner, :nom, :prenom, :logo, :telephone, :email, :password, :ville, :pays, :quartier
 json.url partner_url(partner, format: :json)
