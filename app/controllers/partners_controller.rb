@@ -26,8 +26,7 @@ class PartnersController < ApplicationController
 
     respond_to do |format|
       if @partner.save
-        format.html { redirect_to partner_url(@partner), notice: "Partner was successfully created." }
-        format.json { render :show, status: :created, location: @partner }
+        render json: @partner, status: :created
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @partner.errors, status: :unprocessable_entity }
