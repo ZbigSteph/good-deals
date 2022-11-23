@@ -26,7 +26,7 @@ class PartnersController < ApplicationController
 
     respond_to do |format|
       if @partner.save
-        render json: @partner, status: :created
+        render json: status: :created
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @partner.errors, status: :unprocessable_entity }
