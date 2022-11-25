@@ -11,7 +11,7 @@ ActiveAdmin.register Partner do
     f.inputs do
       f.input :nom
       f.input :prenom
-      f.input :logo, as: :file
+      f.input :logo
       f.input :telephone
       f.input :email
       f.input :password
@@ -29,9 +29,7 @@ ActiveAdmin.register Partner do
     column :telephone
     column :ville
     column :quartier
-    column :logo do |ad|
-      image_tag url_for(ad.logo), style: 'width: 100px' if ad.logo.attached?
-    end
+    column :logo
     actions
   end
   

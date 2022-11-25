@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_190431) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_25_110702) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -72,7 +72,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_190431) do
     t.integer "prix"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "partner_id", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
+    t.index ["partner_id"], name: "index_articles_on_partner_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -121,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_190431) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "categories"
+  add_foreign_key "articles", "partners"
   add_foreign_key "commandes", "articles"
   add_foreign_key "commandes", "users"
 end
