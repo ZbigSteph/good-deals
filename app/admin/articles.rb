@@ -4,7 +4,7 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :category_id, :label, :description, :prix, :image_couverture, autres_images: []
+  permit_params :category_id, :partner, :label, :description, :prix, :image_couverture, autres_images: []
 
   form do |f|
     f.inputs do
@@ -21,6 +21,7 @@ ActiveAdmin.register Article do
   index do
     selectable_column
     column :category
+    column :partner
     column :label
     column :prix
     column :image_couverture do |ad|
@@ -32,6 +33,7 @@ ActiveAdmin.register Article do
   show do
     attributes_table do
       row :category
+      row :partner
       row :partner
       row :label
       row :prix
