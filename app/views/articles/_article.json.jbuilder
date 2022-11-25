@@ -1,4 +1,4 @@
-json.extract! article, :id, :category, :label, :description, :prix
+json.extract! article, :id, :category, :label, :description, :prix, :partner
 # json.url article_url(article, format: :json)
 json.image_url polymorphic_url(article.image_couverture) if article.image_couverture.attached?
 json.attachments article.autres_images do |attachment|
