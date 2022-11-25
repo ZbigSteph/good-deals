@@ -9,6 +9,7 @@ ActiveAdmin.register Article do
   form do |f|
     f.inputs do
       f.input :category
+      f.input :partner
       f.input :label
       f.input :description
       f.input :prix
