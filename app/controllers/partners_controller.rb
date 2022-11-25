@@ -22,7 +22,7 @@ class PartnersController < ApplicationController
   def create
     @partner = Partner.new(partner_params)
     if @partner.save
-      render status: :created
+      render json: @partner, status: :created
     else
       render json: @partner.errors, status: :unprocessable_entity
     end
