@@ -26,7 +26,7 @@ ActiveAdmin.register Article do
     column :label
     column :prix
     column :image_couverture do |ad|
-      image_tag url_for(ad.image_couverture), style: 'width: 100px'
+      image_tag url_for(ad.image_couverture), style: 'width: 100px' if ad.image_couverture.attached?
     end
     actions
   end
