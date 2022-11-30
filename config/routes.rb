@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "admin/articles#index"
   post 'auth/login', to: 'authentication#login'
-  get 'my_products', to: 'articles#articles_by_partner'
+  get 'my_products/:id', to: 'articles#articles_by_partner'
 end
