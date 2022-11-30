@@ -69,7 +69,10 @@ class ArticlesController < ApplicationController
     @articles = Article.where(partner_id: params[:id])
     @articles.joins(:image_couverture)
     @articles.joins(:autres_images)
-    render json: @articles
+    render json: @articles.map { |article|
+      article.as_json(only: %i[id category_id label description prix
+                               partner_id]).merge(image_couverture_path: polymorphic_url(article.image_couverture))
+    }
   end
 
   private
@@ -82,6 +85,6 @@ class ArticlesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def article_params
     params.permit(:category_id, :partner_id, :label, :description, :prix, :image_couverture,
-                                    autres_images: [])
+                  autres_images: [])
   end
 end
