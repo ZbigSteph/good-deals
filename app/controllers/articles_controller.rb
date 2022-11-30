@@ -65,6 +65,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def articles_by_partner
+    @articles = Article.where(partner_id: params[:id])
+    @articles.joins(:image_couverture)
+    @articles.joins(:autres_images)
+    render json: @articles.map { |article|
+      article.as_json(only: %i[article.category label description prix
+                               partner]).merge(image_couverture_path: polymorphic_url(article.image_couverture))
+             .merge(autre_images_path: article.autres_images.each do |img|
+                                         polymorphic_url(img)
+                                       end)
+    }
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -74,6 +87,7 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:category_id, :partner_id, :label, :description, :prix, :image_couverture, autres_images: [])
+    params.permit(:category_id, :partner_id, :label, :description, :prix, :image_couverture,
+                                    autres_images: [])
   end
 end
