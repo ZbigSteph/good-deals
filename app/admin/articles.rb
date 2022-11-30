@@ -4,7 +4,7 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :category_id, :partner, :label, :description, :prix, :image_couverture, autres_images: []
+  permit_params :category_id, :partner_id, :label, :description, :prix, :image_couverture, autres_images: []
 
   form do |f|
     f.inputs do
