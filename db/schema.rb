@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_054326) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_064920) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -110,6 +110,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_054326) do
     t.string "password"
   end
 
+  create_table "sous_categories", force: :cascade do |t|
+    t.string "titre"
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_sous_categories_on_category_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "nom"
     t.string "prenom"
@@ -127,4 +135,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_054326) do
   add_foreign_key "articles", "partners"
   add_foreign_key "commandes", "articles"
   add_foreign_key "commandes", "users"
+  add_foreign_key "sous_categories", "categories"
 end

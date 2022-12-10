@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sous categories</h1>
+
+<div id="sous_categories">
+  <% @sous_categories.each do |sous_category| %>
+    <%= render sous_category %>
+    <p>
+      <%= link_to "Show this sous category", sous_category %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sous category", new_sous_category_path %>
