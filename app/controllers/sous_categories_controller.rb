@@ -1,6 +1,6 @@
 class SousCategoriesController < InheritedResources::Base
-  skip_before_action :authenticate_request, only: %i[index show]
-  
+  skip_before_action :authenticate_request
+
   private
 
     def sous_category_params
