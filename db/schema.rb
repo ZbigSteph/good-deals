@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_064920) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_17_175809) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -66,15 +66,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_064920) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "category_id", null: false
     t.string "label"
     t.text "description"
     t.integer "prix"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "partner_id", null: false
-    t.index ["category_id"], name: "index_articles_on_category_id"
+    t.integer "sous_category_id", null: false
     t.index ["partner_id"], name: "index_articles_on_partner_id"
+    t.index ["sous_category_id"], name: "index_articles_on_sous_category_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -131,8 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_064920) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "articles", "categories"
   add_foreign_key "articles", "partners"
+  add_foreign_key "articles", "sous_categories"
   add_foreign_key "commandes", "articles"
   add_foreign_key "commandes", "users"
   add_foreign_key "sous_categories", "categories"
