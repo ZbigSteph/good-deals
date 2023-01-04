@@ -1,5 +1,5 @@
 class CommandesController < ApplicationController
-  before_action :set_commande, only: %i[ show edit update destroy ]
+  before_action :set_commande, only: %i[show edit update destroy]
 
   # GET /commandes or /commandes.json
   def index
@@ -7,8 +7,7 @@ class CommandesController < ApplicationController
   end
 
   # GET /commandes/1 or /commandes/1.json
-  def show
-  end
+  def show; end
 
   # GET /commandes/new
   def new
@@ -16,8 +15,7 @@ class CommandesController < ApplicationController
   end
 
   # GET /commandes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /commandes or /commandes.json
   def create
@@ -25,7 +23,7 @@ class CommandesController < ApplicationController
 
     respond_to do |format|
       if @commande.save
-        format.html { redirect_to commande_url(@commande), notice: "Commande was successfully created." }
+        format.html { redirect_to commande_url(@commande), notice: 'Commande was successfully created.' }
         format.json { render :show, status: :created, location: @commande }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class CommandesController < ApplicationController
   def update
     respond_to do |format|
       if @commande.update(commande_params)
-        format.html { redirect_to commande_url(@commande), notice: "Commande was successfully updated." }
+        format.html { redirect_to commande_url(@commande), notice: 'Commande was successfully updated.' }
         format.json { render :show, status: :ok, location: @commande }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,30 @@ class CommandesController < ApplicationController
     @commande.destroy
 
     respond_to do |format|
-      format.html { redirect_to commandes_url, notice: "Commande was successfully destroyed." }
+      format.html { redirect_to commandes_url, notice: 'Commande was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_commande
-      @commande = Commande.find(params[:id])
-    end
+  def my_commandes
+    @commandes = Cammande.joins(:articles).where({ 'article.user_id' => params[:id] })
+    render json: @commandes
+  end
 
-    # Only allow a list of trusted parameters through.
-    def commande_params
-      params.require(:commande).permit(:article_id, :user_id, :quantite, :adresse_livraison)
-    end
+  def article_commander
+    @commande = Commande.where({ 'user_id' => params[:id] })
+    render json: @commandes
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_commande
+    @commande = Commande.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def commande_params
+    params.require(:commande).permit(:article_id, :user_id, :quantite, :adresse_livraison)
+  end
 end

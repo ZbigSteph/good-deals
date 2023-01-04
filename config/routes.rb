@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   root "admin/articles#index"
   post 'auth/login', to: 'authentication#login'
   get 'my_products/:id', to: 'articles#articles_by_partner'
+  get 'my_commandes/:id', to: 'commandes#my_commandes'
+  get 'article_commander/:id', to: 'commandes#article_commander'
 end
