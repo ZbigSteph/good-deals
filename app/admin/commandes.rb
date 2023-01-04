@@ -5,7 +5,7 @@ ActiveAdmin.register Commande do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :article_id, :user_id, :quantite, :adresse_livraison
+  permit_params :article_id, :partner_id, :quantite, :adresse_livraison
   
   
 end
