@@ -57,7 +57,7 @@ class CommandesController < ApplicationController
   end
 
   def my_commandes
-    @commandes = Commande.joins(:articles).where({ 'article.partner_id' => params[:id] })
+    @commandes = Commande.joins(:article).where({ 'article.partner_id' => params[:id] })
     render json: @commandes
   end
 
