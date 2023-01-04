@@ -62,7 +62,7 @@ class CommandesController < ApplicationController
   end
 
   def article_commander
-    @commande = Commande.where({ 'partner_id' => params[:id] })
+    @commandes = Commande.where({ 'partner_id' => params[:id] })
     render json: @commandes
   end
 
