@@ -62,7 +62,7 @@ class CommandesController < ApplicationController
   end
 
   def article_commander
-    @commandes = Commande.joins(:article).select('article.label, article.description, article.prix, commandes.quantite, commandes.adresse_livraison').where({ 'partner_id' => params[:id] })
+    @commandes = Commande.joins(:article).select('article.label, article.description, article.prix, commandes.quantite, commandes.adresse_livraison').where({ 'commandes.partner_id' => params[:id] })
     render json: @commandes
   end
 
