@@ -62,13 +62,13 @@ class CommandesController < ApplicationController
   end
 
   def article_commander
-    @commandes = Commande.joins(:article).select('article.label, article.description, article.prix, commandes.quantite, commandes.adresse_livraison').where({ 'commandes.partner_id' => params[:id] })
+    @commandes = Commande.joins(:article).where({ 'commandes.partner_id' => params[:id] })
     render json: @commandes
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions. 
+  # Use callbacks to share common setup or constraints between actions.
   def set_commande
     @commande = Commande.find(params[:id])
   end
