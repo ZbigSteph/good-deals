@@ -1,4 +1,4 @@
 class Commande < ApplicationRecord
   belongs_to :article
-  belongs_to :user
+  belongs_to :partner
 end
