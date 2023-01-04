@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_175809) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_113126) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -87,13 +87,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_175809) do
 
   create_table "commandes", force: :cascade do |t|
     t.integer "article_id", null: false
-    t.integer "user_id", null: false
     t.string "quantite"
     t.string "adresse_livraison"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "partner_id", null: false
     t.index ["article_id"], name: "index_commandes_on_article_id"
-    t.index ["user_id"], name: "index_commandes_on_user_id"
+    t.index ["partner_id"], name: "index_commandes_on_partner_id"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -134,6 +134,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_175809) do
   add_foreign_key "articles", "partners"
   add_foreign_key "articles", "sous_categories"
   add_foreign_key "commandes", "articles"
-  add_foreign_key "commandes", "users"
+  add_foreign_key "commandes", "partners"
   add_foreign_key "sous_categories", "categories"
 end
