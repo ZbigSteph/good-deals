@@ -57,12 +57,12 @@ class CommandesController < ApplicationController
   end
 
   def my_commandes
-    @commandes = Cammande.joins(:articles).where({ 'article.user_id' => params[:id] })
+    @commandes = Cammande.joins(:articles).where({ 'article.partner_id' => params[:id] })
     render json: @commandes
   end
 
   def article_commander
-    @commande = Commande.where({ 'user_id' => params[:id] })
+    @commande = Commande.where({ 'partner_id' => params[:id] })
     render json: @commandes
   end
 
@@ -75,6 +75,6 @@ class CommandesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def commande_params
-    params.require(:commande).permit(:article_id, :user_id, :quantite, :adresse_livraison)
+    params.require(:commande).permit(:article_id, :partner_id, :quantite, :adresse_livraison)
   end
 end
