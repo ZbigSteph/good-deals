@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   belongs_to :partner
   has_one_attached :image_couverture
   has_many_attached :autres_images
+  has_many :commandes
   
   # after_create :set_filename
   
