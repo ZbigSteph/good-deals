@@ -1,5 +1,5 @@
 class PartnersController < ApplicationController
-  skip_before_action :authenticate_request, only: %i[create index show]
+  skip_before_action :authenticate_request, only: %i[create index show update]
   before_action :set_partner, only: %i[show edit update destroy]
 
   # GET /partners or /partners.json
