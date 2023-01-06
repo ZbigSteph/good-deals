@@ -1,5 +1,5 @@
 class CommandesController < ApplicationController
-  skip_before_action :authenticate_request, only: %i[index show my_commandes article_commander]
+  skip_before_action :authenticate_request, only: %i[index show my_commandes article_commander create]
   before_action :set_commande, only: %i[show edit update destroy]
 
   # GET /commandes or /commandes.json
