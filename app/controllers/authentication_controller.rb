@@ -12,11 +12,11 @@ class AuthenticationController < ApplicationController
     #   render json: { error: 'unauthorized', authenticate: false }, status: :unauthorized
     # end
     @partner = Partner.find_by(telephone: params[:telephone])
-    if @partner.present?
+    if @partner.present? && @partner.password == params[:password]
       render json: @partner
     else
       render json: { error: 'Utilisateur non existant' }
     end
   end
-  
+
 end
