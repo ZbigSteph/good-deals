@@ -13,9 +13,9 @@ class AuthenticationController < ApplicationController
     # end
     @partner = Partner.find_by(telephone: params[:telephone])
     if @partner.present? && @partner.password == params[:password]
-      render json: @partner
+      render json: { status: 'OK', user: @partner }
     else
-      render json: { error: 'Utilisateur non existant' }
+      render json: { status: 'error', message: 'Utilisateur non existant' }
     end
   end
 
