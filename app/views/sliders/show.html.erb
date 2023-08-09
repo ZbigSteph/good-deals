@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @slider %>
+
+<div>
+  <%= link_to "Edit this slider", edit_slider_path(@slider) %> |
+  <%= link_to "Back to sliders", sliders_path %>
+
+  <%= button_to "Destroy this slider", @slider, method: :delete %>
+</div>
